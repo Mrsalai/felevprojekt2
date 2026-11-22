@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Receptkereső - Keresés</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/stilus.css">
+</head>
+<body>
+  <header>
+    <h1>Receptkereső</h1>
+    <nav aria-label="Fő navigáció">
+      <a href="index.html">Kezdőlap</a>
+      <a href="kereses.html">Keresés</a>
+      <a href="receptek.html">Receptek</a>
+      <a href="kedvencek.html">Kedvencek</a>
+      <a href="uj-recept.html">Új recept</a>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Recept keresése</h2>
+      <div class="szuro">
+        <label>
+          Keresett szó
+          <input id="kereses" type="search" placeholder="pl. tészta">
+        </label>
+        <label>
+          Rendezés
+          <select id="rendezes">
+            <option value="nev">Név szerint</option>
+            <option value="ido">Készítési idő szerint</option>
+          </select>
+        </label>
+      </div>
+      <p id="betoltes">A receptek betöltésre várnak.</p>
+      <div id="recept-lista" class="kartya-sor"></div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2026 Receptkereső</p>
+  </footer>
+</body>
+</html>

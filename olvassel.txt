@@ -1,0 +1,37 @@
+Szalai Regő FW28RA
+
+Téma:
+Egy recept kereső weboldal.
+
+Technologiák: html, css, vanilla java scipt
+
+
+
+--MI-NAPLÓ--
+1. Html és cs struktúrát alakítattam ki a copilot-al.
+
+
+
+Követelmények:
+Technikai és szerkezeti követelmények¶
+Technológiák: HTML, CSS és JavaScript. Külső JS-könyvtár és keretrendszer is használható, de a működését is el kell tudnod magyarázni a védésen; a pontozás „Mit nézünk” oszlopa a natív megoldást írja le, könyvtárral vagy keretrendszerrel az ott leírt funkcióknak kell meglenniük. MI-eszköz használható a 6. hét szabályai szerint (a négy kérdés, MI-napló az olvassel.txt-ben).
+Oldalszerkezet: 4–8 oldal, minden oldalon ugyanaz a fejléc és menü, bármelyik oldalról bármelyik másikra el lehet jutni.
+Reszponzivitás: mobile-first stíluslap, Flexbox és media query; az oldal 320 px-től asztali méretig vízszintes görgetés nélkül jelenik meg.
+Kódminőség: formázott, W3C-valid HTML minden oldalon; egyetlen külső stíluslap; a JavaScript külön fájl(ok)ban.
+Adatforrás: a JavaScript egy nyilvános, kulcs nélküli REST API-ról vagy a projektben tárolt helyi JSON-fájlból (mock adat) tölt be adatot a fetch API-val (lásd lent). Helyi JSON-fájl esetén a fetch csak helyi szerverrel működik.
+Fájlstruktúra: index.html és a többi oldal a gyökérben, mellettük css/, js/, img/ mappák, olvassel.txt; a .github/copilot-instructions.md szabályfájl opcionális.
+Pontozás (35 pont)¶
+A) HTML és CSS — 16 pont¶
+#	Tétel	Pont	Mit nézünk
+1	HTML-szerkezet és navigáció	4	4–8 oldal; azonos header + nav, main, footer minden oldalon; szemantikus elemek (article, section, aside) és címsor-hierarchia; minden képen tartalmas alt; title, meta charset és viewport; W3C-valid minden oldal
+2	Stíluslap-alapok	3	egyetlen külső css/stilus.css; :root paletta (3–4 szín) és Google Fonts (címsor + szöveg); méretek rem-ben; box-sizing: border-box; nincs inline style
+3	Reszponzív elrendezés	5	mobile-first stíluslap 40em és 60em töréspontokkal; Flexbox: a menü egy oszlopból sorba áll, a kártyasor (legalább 3 kártya) tördelődik; képek max-width: 100%; a body max-width-tel középen; nincs vízszintes görgetés 320 px-en
+4	Adattáblázat és elemállapotok	2	egy valódi adatot hordozó table caption, thead/tbody, th scope elemekkel, zebracsíkkal és görgethető konténerrel; linken és gombon :hover + :focus-visible
+5	Projektfegyelem	2	rendezett mappák, formázott kód; teljes olvassel.txt (lásd lent)
+B) JavaScript — 19 pont¶
+#	Tétel	Pont	Mit nézünk
+6	Adatbetöltés fetch-csel	5	külön js/ fájl defer-rel; async függvény fetch-csel egy nyilvános API-ról vagy helyi JSON-fájlból; response.ok ellenőrzés és response.json(); try/catch; betöltés és hiba állapot az oldalon (nem alert); a lekért adat egy tömbben
+7	Renderelés a DOM-ba	4	a betöltött tömbből kártyasor vagy táblázatsorok épülnek (createElement, append, textContent); a renderelő újrahívható függvény (render(lista)), ami előbb kiüríti a konténert; a generált elemek a meglévő CSS-osztályokat kapják
+8	Műveletek az adaton	5	legalább két különböző művelet, mindkettő újrarendereli a listát: (a) élő szűrés vagy keresés input eseményre (filter), és (b) rendezés select-re vagy gombra (sort), vagy részletnézet kattintásra, vagy darabszám/összeg kijelzése; az eredeti tömb nem sérül
+9	Űrlap és POST	5	form legalább 5 különböző mezőtípussal, minden mezőhöz label; beépített HTML-validáció (required, type, min/max); submit esemény preventDefault()-tal, az értékek kiolvasása objektumba; fetch POST JSON-törzzsel egy nyilvános API-ra (helyi JSON-fájlra nem lehet küldeni); a válasz (pl. a kapott id) és a hibaág az oldalon jelenik meg
+Tételenként részpont is adható; a két tömbművelet 2,5–2,5 pontot ér. A tárgy teljesítéséhez a beadandóból legalább 14 pont kell.

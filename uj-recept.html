@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Receptkereső - Új recept</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/stilus.css">
+</head>
+<body>
+  <header>
+    <h1>Receptkereső</h1>
+    <nav aria-label="Fő navigáció">
+      <a href="index.html">Kezdőlap</a>
+      <a href="kereses.html">Keresés</a>
+      <a href="receptek.html">Receptek</a>
+      <a href="kedvencek.html">Kedvencek</a>
+      <a href="uj-recept.html">Új recept</a>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Új recept feltöltése</h2>
+      <form id="recept-form">
+        <div class="mezo">
+          <label for="nev">Recept neve</label>
+          <input id="nev" name="nev" type="text" required>
+        </div>
+        <div class="mezo">
+          <label for="leiras">Leírás</label>
+          <textarea id="leiras" name="leiras" required minlength="10"></textarea>
+        </div>
+        <div class="mezo">
+          <label for="ido">Készítési idő (perc)</label>
+          <input id="ido" name="ido" type="number" min="1" max="480" required>
+        </div>
+        <div class="mezo">
+          <label for="kategoria">Kategória</label>
+          <select id="kategoria" name="kategoria" required>
+            <option value="">Válassz...</option>
+            <option value="foetel">Főétel</option>
+            <option value="leves">Leves</option>
+            <option value="desszert">Desszert</option>
+          </select>
+        </div>
+        <fieldset class="mezo">
+          <legend>Nehézség</legend>
+          <label><input type="radio" name="nehézség" value="konnyu" required> Könnyű</label>
+          <label><input type="radio" name="nehézség" value="kozepes"> Közepes</label>
+        </fieldset>
+        <div class="mezo">
+          <label><input type="checkbox" name="vegetarianus"> Vegetáriánus</label>
+        </div>
+        <div class="mezo">
+          <label for="kep">Recept képe</label>
+          <input id="kep" name="kep" type="file" accept="image/*">
+        </div>
+        <button type="submit">Recept elküldése</button>
+      </form>
+      <p id="uzenet" role="status"></p>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2026 Receptkereső</p>
+  </footer>
+</body>
+</html>
