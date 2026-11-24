@@ -1,37 +1,51 @@
-Szalai Regő FW28RA
+Név: Szalai Regő
+Neptun-kód: FW28RA
 
 Téma:
-Egy recept kereső weboldal.
+A Recipe Finder egy angol nyelvű, reszponzív receptböngésző weboldal (az angol nyelvű DummyJSON API-hoz igazítva), ahol a látogatók receptek között kereshetnek, rendezhetik őket és véletlenszerű főzési ötletet kérhetnek. Az oldalon emellett összefoglaló adattáblázat és új recept beküldésére szolgáló űrlap is található.
 
-Technologiák: html, css, vanilla java scipt
+Technológiák:
+HTML5, CSS3 (mobile-first Flexbox, CSS változók, Google Fonts), vanilla JavaScript (fetch API, async/await, DOM-kezelés).
 
+Használt nyilvános, kulcs nélküli REST API és adatleképezés:
+- DummyJSON Recipes API:
+  - GET  https://dummyjson.com/recipes?limit=0 (összes recept betöltése a kereső- és a táblázatoldalon)
+  - GET  https://dummyjson.com/recipes/{id} (egy véletlenszerű recept lekérése 1–50 közötti ID-val)
+  - POST https://dummyjson.com/recipes/add (új recept beküldése JSON-törzzsel, a válasz tartalmazza a kapott ID-t)
+- Adatleképezés a témára:
+  - name -> recept címe (kártya h3 / táblázat th scope="row")
+  - image -> recept képe (img, alt = name)
+  - cuisine, difficulty, caloriesPerServing -> konyhatípus, nehézség, kalória / adag
+  - prepTimeMinutes + cookTimeMinutes -> teljes elkészítési idő percben (megjelenítéshez és rendezéshez)
+  - ingredients, instructions -> hozzávalók (ul) és elkészítési lépések (ol) a Random recept oldalon
 
+Oldalak és fájlstruktúra:
+- index.html          : Kezdőlap bemutatkozással, főzési tippel (aside) és 3 kiemelt receptkártyával.
+- kereses.html        : Élő receptkereső és rendező oldal.
+- receptek.html       : Áttekintő adattáblázat (caption, thead, tbody, th scope, zebracsík, görgethető konténer).
+- random-recept.html  : Véletlen recept ajánló oldal gombnyomásra frissülő recepttel.
+- uj-recept.html      : Új recept beküldő űrlap 5 mezővel (text, select, number, radio) és POST kéréssel.
+- css/stilus.css      : Egyetlen közös, mobile-first külső stíluslap (40em és 60em töréspontokkal).
+- img/                : Helyi receptfotók a kezdőlaphoz (teszta.jpg, leves.jpg, piritos.jpg).
+
+JavaScript-fájlok:
+- js/kereses.js       : GET fetch (limit=0), render(lista), élő keresés (filter), rendezés (sort) az eredeti tömb megőrzésével, darabszám és hibaállapot.
+- js/receptek.js      : GET fetch (limit=0), összes recept megjelenítése táblázatsorokként (tr, th scope="row", td).
+- js/random-recept.js : Véletlen ID (1–50), GET fetch (/recipes/{id}), receptkártya hozzávalókkal és elkészítési lépésekkel, újrasorsolás gomb.
+- js/uj-recept.js     : Űrlap submit kezelése preventDefault()-tal, adatok kiolvasása objektumba, POST fetch JSON-törzzsel, kapott ID és hibaág megjelenítése.
 
 --MI-NAPLÓ--
-1. Html és cs struktúrát alakítattam ki a copilot-al.
+1. Eszköz és dátum: GitHub Copilot, 2026. november
+   - Mihez kértem: a kezdeti HTML-oldalak vázának és az alap CSS-stíluslap struktúrájának elkészítéséhez.
+   - Mit változtattam: saját színpalettát, egységes navigációt és receptes tartalmat állítottam össze.
+   - Mivel ellenőriztem: böngészős megnyitással és forráskód-átnézéssel.
 
+2. Eszköz és dátum: Google Antigravity, 2026. november 24.
+   - Mihez kértem: a reszponzív CSS javításához (teljes szélességű fejléc/lábléc, középre igazított tartalom, zebracsíkos táblázat), a 4 különálló vanilla JS fájl elkészítéséhez, valamint az oldal angol nyelvűvé alakításához a DummyJSON API-hoz igazodva.
+   - Mit változtattam: a Kedvencek oldal helyett Random recept oldalt kértem, egyszerűsítettem az űrlapot a DummyJSON mezőire, csökkentettem a felesleges div-ek számát, és külön JS-fájlokra bontottam a szkripteket.
+   - Mivel ellenőriztem: Node.js szintaxisellenőrzéssel (node --check), HTML/CSS szerkezeti ellenőrzéssel és böngészős teszteléssel.
 
-
-Követelmények:
-Technikai és szerkezeti követelmények¶
-Technológiák: HTML, CSS és JavaScript. Külső JS-könyvtár és keretrendszer is használható, de a működését is el kell tudnod magyarázni a védésen; a pontozás „Mit nézünk” oszlopa a natív megoldást írja le, könyvtárral vagy keretrendszerrel az ott leírt funkcióknak kell meglenniük. MI-eszköz használható a 6. hét szabályai szerint (a négy kérdés, MI-napló az olvassel.txt-ben).
-Oldalszerkezet: 4–8 oldal, minden oldalon ugyanaz a fejléc és menü, bármelyik oldalról bármelyik másikra el lehet jutni.
-Reszponzivitás: mobile-first stíluslap, Flexbox és media query; az oldal 320 px-től asztali méretig vízszintes görgetés nélkül jelenik meg.
-Kódminőség: formázott, W3C-valid HTML minden oldalon; egyetlen külső stíluslap; a JavaScript külön fájl(ok)ban.
-Adatforrás: a JavaScript egy nyilvános, kulcs nélküli REST API-ról vagy a projektben tárolt helyi JSON-fájlból (mock adat) tölt be adatot a fetch API-val (lásd lent). Helyi JSON-fájl esetén a fetch csak helyi szerverrel működik.
-Fájlstruktúra: index.html és a többi oldal a gyökérben, mellettük css/, js/, img/ mappák, olvassel.txt; a .github/copilot-instructions.md szabályfájl opcionális.
-Pontozás (35 pont)¶
-A) HTML és CSS — 16 pont¶
-#	Tétel	Pont	Mit nézünk
-1	HTML-szerkezet és navigáció	4	4–8 oldal; azonos header + nav, main, footer minden oldalon; szemantikus elemek (article, section, aside) és címsor-hierarchia; minden képen tartalmas alt; title, meta charset és viewport; W3C-valid minden oldal
-2	Stíluslap-alapok	3	egyetlen külső css/stilus.css; :root paletta (3–4 szín) és Google Fonts (címsor + szöveg); méretek rem-ben; box-sizing: border-box; nincs inline style
-3	Reszponzív elrendezés	5	mobile-first stíluslap 40em és 60em töréspontokkal; Flexbox: a menü egy oszlopból sorba áll, a kártyasor (legalább 3 kártya) tördelődik; képek max-width: 100%; a body max-width-tel középen; nincs vízszintes görgetés 320 px-en
-4	Adattáblázat és elemállapotok	2	egy valódi adatot hordozó table caption, thead/tbody, th scope elemekkel, zebracsíkkal és görgethető konténerrel; linken és gombon :hover + :focus-visible
-5	Projektfegyelem	2	rendezett mappák, formázott kód; teljes olvassel.txt (lásd lent)
-B) JavaScript — 19 pont¶
-#	Tétel	Pont	Mit nézünk
-6	Adatbetöltés fetch-csel	5	külön js/ fájl defer-rel; async függvény fetch-csel egy nyilvános API-ról vagy helyi JSON-fájlból; response.ok ellenőrzés és response.json(); try/catch; betöltés és hiba állapot az oldalon (nem alert); a lekért adat egy tömbben
-7	Renderelés a DOM-ba	4	a betöltött tömbből kártyasor vagy táblázatsorok épülnek (createElement, append, textContent); a renderelő újrahívható függvény (render(lista)), ami előbb kiüríti a konténert; a generált elemek a meglévő CSS-osztályokat kapják
-8	Műveletek az adaton	5	legalább két különböző művelet, mindkettő újrarendereli a listát: (a) élő szűrés vagy keresés input eseményre (filter), és (b) rendezés select-re vagy gombra (sort), vagy részletnézet kattintásra, vagy darabszám/összeg kijelzése; az eredeti tömb nem sérül
-9	Űrlap és POST	5	form legalább 5 különböző mezőtípussal, minden mezőhöz label; beépített HTML-validáció (required, type, min/max); submit esemény preventDefault()-tal, az értékek kiolvasása objektumba; fetch POST JSON-törzzsel egy nyilvános API-ra (helyi JSON-fájlra nem lehet küldeni); a válasz (pl. a kapott id) és a hibaág az oldalon jelenik meg
-Tételenként részpont is adható; a két tömbművelet 2,5–2,5 pontot ér. A tárgy teljesítéséhez a beadandóból legalább 14 pont kell.
+Külső források:
+- DummyJSON Recipes API dokumentáció: https://dummyjson.com/docs/recipes
+- Google Fonts (Montserrat, Lora): https://fonts.google.com/
+- Tantárgyi követelmények: https://webdev.matyusweb.hu/hu/webdev/week00/01-beadando/

@@ -1,69 +1,72 @@
 <!doctype html>
-<html lang="hu">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Receptkereső - Új recept</title>
+  <title>Recipe Finder - Add Recipe</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/stilus.css">
+  <script src="js/uj-recept.js" defer></script>
 </head>
 <body>
   <header>
-    <h1>Receptkereső</h1>
-    <nav aria-label="Fő navigáció">
-      <a href="index.html">Kezdőlap</a>
-      <a href="kereses.html">Keresés</a>
-      <a href="receptek.html">Receptek</a>
-      <a href="kedvencek.html">Kedvencek</a>
-      <a href="uj-recept.html">Új recept</a>
+    <h1>Recipe Finder</h1>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="kereses.html">Search</a>
+      <a href="receptek.html">Recipes</a>
+      <a href="random-recept.html">Random Recipe</a>
+      <a href="uj-recept.html" aria-current="page">Add Recipe</a>
     </nav>
   </header>
   <main>
     <section>
-      <h2>Új recept feltöltése</h2>
+      <h2>Submit a New Recipe</h2>
+      <p>Enter your recipe details below. Submitting the form sends a POST request to the DummyJSON test API.</p>
       <form id="recept-form">
-        <div class="mezo">
-          <label for="nev">Recept neve</label>
-          <input id="nev" name="nev" type="text" required>
-        </div>
-        <div class="mezo">
-          <label for="leiras">Leírás</label>
-          <textarea id="leiras" name="leiras" required minlength="10"></textarea>
-        </div>
-        <div class="mezo">
-          <label for="ido">Készítési idő (perc)</label>
-          <input id="ido" name="ido" type="number" min="1" max="480" required>
-        </div>
-        <div class="mezo">
-          <label for="kategoria">Kategória</label>
-          <select id="kategoria" name="kategoria" required>
-            <option value="">Válassz...</option>
-            <option value="foetel">Főétel</option>
-            <option value="leves">Leves</option>
-            <option value="desszert">Desszert</option>
+        <p class="mezo">
+          <label for="name">Recipe</label>
+          <input id="name" name="name" type="text" required placeholder="e.g. Creamy Garlic Pasta">
+        </p>
+        <p class="mezo">
+          <label for="cuisine">Cuisine</label>
+          <select id="cuisine" name="cuisine" required>
+            <option value="">Choose...</option>
+            <option value="Italian">Italian</option>
+            <option value="Asian">Asian</option>
+            <option value="American">American</option>
+            <option value="Mexican">Mexican</option>
+            <option value="Mediterranean">Mediterranean</option>
+            <option value="Greek">Greek</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Indian">Indian</option>
           </select>
-        </div>
+        </p>
+        <p class="mezo">
+          <label for="cookTimeMinutes">Cooking time (minutes)</label>
+          <input id="cookTimeMinutes" name="cookTimeMinutes" type="number" min="1" max="480" required placeholder="e.g. 30">
+        </p>
         <fieldset class="mezo">
-          <legend>Nehézség</legend>
-          <label><input type="radio" name="nehézség" value="konnyu" required> Könnyű</label>
-          <label><input type="radio" name="nehézség" value="kozepes"> Közepes</label>
+          <legend>Difficulty</legend>
+          <p class="valaszto-sor">
+            <label><input type="radio" name="difficulty" value="Easy" required> Easy</label>
+            <label><input type="radio" name="difficulty" value="Medium"> Medium</label>
+            <label><input type="radio" name="difficulty" value="Hard"> Hard</label>
+          </p>
         </fieldset>
-        <div class="mezo">
-          <label><input type="checkbox" name="vegetarianus"> Vegetáriánus</label>
-        </div>
-        <div class="mezo">
-          <label for="kep">Recept képe</label>
-          <input id="kep" name="kep" type="file" accept="image/*">
-        </div>
-        <button type="submit">Recept elküldése</button>
+        <p class="mezo">
+          <label for="caloriesPerServing">Calories / serving (kcal)</label>
+          <input id="caloriesPerServing" name="caloriesPerServing" type="number" min="50" max="2000" required placeholder="e.g. 420">
+        </p>
+        <button type="submit">Submit Recipe</button>
       </form>
-      <p id="uzenet" role="status"></p>
+      <p id="uzenet" class="allapot" role="status"></p>
     </section>
   </main>
   <footer>
-    <p>&copy; 2026 Receptkereső</p>
+    <p>&copy; 2026 Recipe Finder</p>
   </footer>
 </body>
 </html>

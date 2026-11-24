@@ -3,7 +3,7 @@
   --sotet: #263238;
   --fok: #e76f51;
   --masodlagos: #2a9d8f;
-  --feher: #fff;
+  --feher: #ffffff;
 }
 
 * {
@@ -12,10 +12,11 @@
 
 body {
   min-height: 100vh;
-  margin: 0 auto;
+  margin: 0;
   background: var(--hatter);
   color: var(--sotet);
   font-family: "Lora", Georgia, serif;
+  line-height: 1.6;
   display: flex;
   flex-direction: column;
 }
@@ -23,9 +24,13 @@ body {
 h1,
 h2,
 h3,
+h4,
 nav,
 button,
-label {
+label,
+legend,
+caption,
+th {
   font-family: "Montserrat", Arial, sans-serif;
 }
 
@@ -38,37 +43,67 @@ img {
 header {
   background: var(--fok);
   color: var(--feher);
-  width: 100%;
   padding: 1rem;
+}
 
+header h1 {
+  max-width: 75rem;
+  margin: 0 auto;
+  font-size: 1.75rem;
 }
 
 nav {
+  max-width: 75rem;
+  margin: 0.75rem auto 0;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  margin-top: 0.75rem;
+  gap: 0.4rem;
 }
 
 nav a {
   flex: 1;
   padding: 0.6rem;
   border-radius: 0.25rem;
-  background: rgb(255 255 255 / 15%);
+  background: rgb(255 255 255 / 18%);
   color: var(--feher);
   text-align: center;
   text-decoration: none;
 }
 
+nav a[aria-current="page"] {
+  background: var(--sotet);
+}
+
 main {
-  min-height: 65vh;
+  flex: 1;
+  width: 100%;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+section,
+aside {
+  margin-bottom: 1.5rem;
+}
+
+aside {
+  padding: 1rem;
+  border-left: 0.25rem solid var(--masodlagos);
+  border-radius: 0.25rem;
+  background: var(--feher);
 }
 
 footer {
   background: var(--sotet);
   color: var(--feher);
   text-align: center;
+  padding: 1rem;
   margin-top: auto;
+}
+
+footer p {
+  margin: 0;
 }
 
 a:hover,
@@ -79,10 +114,9 @@ button:hover {
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
+select:focus-visible {
   outline: 0.2rem solid var(--masodlagos);
-  outline-offset: 0.1rem;
+  outline-offset: 0.15rem;
 }
 
 .kartya-sor {
@@ -92,6 +126,8 @@ textarea:focus-visible {
 }
 
 .kartya {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   border: 0.0625rem solid #ddd;
   border-radius: 0.5rem;
@@ -105,9 +141,31 @@ textarea:focus-visible {
 }
 
 .kartya h3,
-.kartya p,
-.kartya a {
-  margin: 0.75rem;
+.kartya h4,
+.kartya p {
+  margin: 0.5rem 0.75rem;
+}
+
+.kartya ul,
+.kartya ol {
+  margin: 0.25rem 0.75rem 0.75rem 1.75rem;
+  padding: 0;
+}
+
+.kartya h3 {
+  margin-top: 0.75rem;
+}
+
+.kartya p:last-child {
+  margin-bottom: 0.75rem;
+}
+
+.kartya-egyedi {
+  max-width: 40rem;
+}
+
+.kartya-egyedi img {
+  height: 18rem;
 }
 
 .gomb,
@@ -120,34 +178,82 @@ button {
   color: var(--feher);
   cursor: pointer;
   text-decoration: none;
+  font-size: 1rem;
 }
 
-/* Search and form */
+/* Kereső és űrlap */
 .szuro {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
   margin-bottom: 1rem;
 }
 
+.szuro label {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 input,
-select,
-textarea {
+select {
   width: 100%;
   padding: 0.65rem;
   border: 0.0625rem solid #bbb;
   border-radius: 0.25rem;
+  background: var(--feher);
   font: inherit;
+}
+
+input[type="radio"] {
+  width: auto;
+  margin-right: 0.4rem;
 }
 
 fieldset,
 .mezo {
   border: 0;
-  margin-bottom: 1rem;
+  margin: 0 0 1rem;
   padding: 0;
 }
 
-/* Table */
+legend {
+  margin-bottom: 0.4rem;
+  padding: 0;
+}
+
+.valaszto-sor {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Állapot- és visszajelző üzenetek */
+.allapot {
+  padding: 0.75rem 1rem;
+  border-left: 0.25rem solid var(--masodlagos);
+  border-radius: 0.25rem;
+  background: #eef6f5;
+  margin: 1rem 0;
+}
+
+.allapot:empty {
+  display: none;
+}
+
+.allapot.siker {
+  background: #e8f5e9;
+}
+
+.allapot.hiba {
+  background: #fdecea;
+  border-left-color: var(--fok);
+  color: #8c2313;
+}
+
+/* Adattáblázat */
 .tablazat-kontener {
   overflow-x: auto;
 }
@@ -158,7 +264,12 @@ table {
   background: var(--feher);
 }
 
-caption,
+caption {
+  padding: 0.75rem 0;
+  text-align: left;
+  font-weight: 600;
+}
+
 th,
 td {
   padding: 0.75rem;
@@ -166,11 +277,20 @@ td {
   text-align: left;
 }
 
-tbody tr:nth-child(even) {
-  background: #f3ece2;
+thead th {
+  background: var(--sotet);
+  color: var(--feher);
 }
 
-/* 40rem = tablet */
+tbody tr:nth-child(even) {
+  background: #e8dfd1;
+}
+
+tbody tr:hover {
+  background: #dceee9;
+}
+
+/* 40em = tablet */
 @media (min-width: 40em) {
   nav,
   .szuro,
@@ -183,14 +303,14 @@ tbody tr:nth-child(even) {
   }
 
   .kartya {
-    flex: 1 1 calc(50% - 1rem);
+    flex: 0 1 calc(50% - 0.5rem);
   }
 }
 
-/* 60rem = desktop */
+/* 60em = asztali nézet */
 @media (min-width: 60em) {
   .kartya {
-    flex-basis: calc(33.333% - 1rem);
+    flex: 0 1 calc(33.333% - 0.67rem);
   }
 
   header,

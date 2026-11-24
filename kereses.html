@@ -1,46 +1,49 @@
 <!doctype html>
-<html lang="hu">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Receptkereső - Keresés</title>
+  <title>Recipe Finder - Search</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/stilus.css">
+  <script src="js/kereses.js" defer></script>
 </head>
 <body>
   <header>
-    <h1>Receptkereső</h1>
-    <nav aria-label="Fő navigáció">
-      <a href="index.html">Kezdőlap</a>
-      <a href="kereses.html">Keresés</a>
-      <a href="receptek.html">Receptek</a>
-      <a href="kedvencek.html">Kedvencek</a>
-      <a href="uj-recept.html">Új recept</a>
+    <h1>Recipe Finder</h1>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="kereses.html" aria-current="page">Search</a>
+      <a href="receptek.html">Recipes</a>
+      <a href="random-recept.html">Random Recipe</a>
+      <a href="uj-recept.html">Add Recipe</a>
     </nav>
   </header>
   <main>
     <section>
-      <h2>Recept keresése</h2>
-      <div class="szuro">
+      <h2>Search Recipes</h2>
+      <p>Filter recipes by name or cuisine (e.g. Pizza, Italian, Pasta, Chicken) and sort the results.</p>
+      <search class="szuro">
         <label>
-          Keresett szó
-          <input id="kereses" type="search" placeholder="pl. tészta" >
+          Search keyword
+          <input id="kereses" type="search" placeholder="e.g. Pizza, Italian, Pasta">
         </label>
         <label>
-          Rendezés
+          Sort by
           <select id="rendezes">
-            <option value="nev">Név szerint</option>
-            <option value="ido">Készítési idő szerint</option>
+            <option value="nev">Name (A–Z)</option>
+            <option value="ido">Cooking time</option>
           </select>
         </label>
-      </div>
+      </search>
+      <p id="allapot" class="allapot" role="status"></p>
       <div id="recept-lista" class="kartya-sor"></div>
     </section>
   </main>
   <footer>
-    <p>&copy; 2026 Receptkereső</p>
+    <p>&copy; 2026 Recipe Finder</p>
   </footer>
 </body>
 </html>

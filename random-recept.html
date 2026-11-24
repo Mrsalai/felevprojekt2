@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recipe Finder - Random Recipe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/stilus.css">
+  <script src="js/random-recept.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <h1>Recipe Finder</h1>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="kereses.html">Search</a>
+      <a href="receptek.html">Recipes</a>
+      <a href="random-recept.html" aria-current="page">Random Recipe</a>
+      <a href="uj-recept.html">Add Recipe</a>
+    </nav>
+  </header>
+  <main>
+    <h2>What Should I Cook? – Random Recipe</h2>
+    <p>Not sure what to make? Click the button below to load a random recipe from the DummyJSON API.</p>
+    <p><button id="uj-gomb" type="button">New Random Recipe</button></p>
+    <p id="allapot" class="allapot" role="status"></p>
+    <article id="random-recept" class="kartya kartya-egyedi">
+      <h3>Loading recipe...</h3>
+    </article>
+  </main>
+  <footer>
+    <p>&copy; 2026 Recipe Finder</p>
+  </footer>
+</body>
+
+</html>

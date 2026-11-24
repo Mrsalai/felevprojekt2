@@ -1,66 +1,72 @@
 <!doctype html>
-<html lang="hu">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Receptkereső - Receptek</title>
+  <title>Recipe Finder - Recipes</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/stilus.css">
+  <script src="js/receptek.js" defer></script>
 </head>
 <body>
   <header>
-    <h1>Receptkereső</h1>
-    <nav aria-label="Fő navigáció">
-      <a href="index.html">Kezdőlap</a>
-      <a href="kereses.html">Keresés</a>
-      <a href="receptek.html">Receptek</a>
-      <a href="kedvencek.html">Kedvencek</a>
-      <a href="uj-recept.html">Új recept</a>
+    <h1>Recipe Finder</h1>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="kereses.html">Search</a>
+      <a href="receptek.html" aria-current="page">Recipes</a>
+      <a href="random-recept.html">Random Recipe</a>
+      <a href="uj-recept.html">Add Recipe</a>
     </nav>
   </header>
   <main>
     <section>
-      <h2>Receptlista</h2>
+      <h2>Recipe List</h2>
+      <p>Overview table of all available recipes with cuisine, total cooking time, difficulty, and calories per serving.</p>
+      <p id="allapot" class="allapot" role="status"></p>
       <div class="tablazat-kontener">
         <table>
-          <caption>Elérhető receptek áttekintése</caption>
+          <caption>Overview of available recipes</caption>
           <thead>
             <tr>
-              <th scope="col">Recept</th>
-              <th scope="col">Kategória</th>
-              <th scope="col">Idő</th>
-              <th scope="col">Nehézség</th>
+              <th scope="col">Recipe</th>
+              <th scope="col">Cuisine</th>
+              <th scope="col">Cooking time</th>
+              <th scope="col">Difficulty</th>
+              <th scope="col">Calories / serving</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="recept-tablazat">
             <tr>
-              <th scope="row">Paradicsomos tészta</th>
-              <td>Főétel</td>
-              <td>30 perc</td>
-              <td>Könnyű</td>
+              <th scope="row">Tomato Basil Pasta</th>
+              <td>Italian</td>
+              <td>30 min</td>
+              <td>Easy</td>
+              <td>420 kcal</td>
             </tr>
             <tr>
-              <th scope="row">Zöldséges leves</th>
-              <td>Leves</td>
-              <td>45 perc</td>
-              <td>Könnyű</td>
+              <th scope="row">Vegetable Soup</th>
+              <td>European</td>
+              <td>45 min</td>
+              <td>Easy</td>
+              <td>190 kcal</td>
             </tr>
             <tr>
-              <th scope="row">Bogyós pirítós</th>
-              <td>Reggeli</td>
-              <td>15 perc</td>
-              <td>Könnyű</td>
+              <th scope="row">Berry French Toast</th>
+              <td>American</td>
+              <td>15 min</td>
+              <td>Easy</td>
+              <td>310 kcal</td>
             </tr>
           </tbody>
         </table>
-        <script src="/js/adatminden.js"></script>
       </div>
     </section>
   </main>
   <footer>
-    <p>&copy; 2026 Receptkereső</p>
+    <p>&copy; 2026 Recipe Finder</p>
   </footer>
 </body>
 </html>
